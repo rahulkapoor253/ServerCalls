@@ -19,11 +19,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.8">
+        android:layout_weight="0.8"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/margintop"
             android:layout_marginTop="@dimen/margintop"
 
@@ -33,7 +34,6 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margintop"
                 android:gravity="center"
                 android:hint="@string/name"
                 android:textSize="@dimen/textSize" />
@@ -56,6 +56,7 @@
                 <com.skeleton.util.customview.MaterialEditText
                     android:id="@+id/et_phone"
                     android:layout_width="0dp"
+                    android:inputType="phone"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margintop"
                     android:layout_weight="0.8"
@@ -115,7 +116,6 @@
                 android:id="@+id/et_dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margintop"
                 android:gravity="center"
                 android:hint="@string/dob"
                 android:textSize="@dimen/textSize" />
@@ -124,7 +124,6 @@
                 android:id="@+id/et_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margintop"
                 android:gravity="center"
                 android:hint="@string/password"
                 android:inputType="textPassword"
@@ -134,7 +133,6 @@
                 android:id="@+id/et_confpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margintop"
                 android:gravity="center"
                 android:hint="@string/confpass"
                 android:inputType="textPassword"
@@ -146,7 +144,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margintop"
                 android:layout_marginStart="@dimen/margintop"
-                android:layout_marginTop="@dimen/margintop"
                 android:text="@string/tos"
                 android:textSize="@dimen/textSize" />
 
@@ -156,7 +153,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margintop"
                 android:layout_marginStart="@dimen/margintop"
-                android:layout_marginTop="@dimen/margintop"
                 android:background="@drawable/bg_green"
                 android:clickable="true"
                 android:gravity="center"

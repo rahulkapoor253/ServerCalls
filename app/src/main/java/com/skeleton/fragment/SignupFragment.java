@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.model.Example;
@@ -41,7 +41,6 @@ public class SignupFragment extends Fragment {
     private MaterialEditText mConfPass;
     private MaterialEditText mPhone;
     private MaterialEditText mDOB;
-    private boolean check;
     private TextView mSubmit;
     private String mUserName, mUserEmail, mUserPass, mUserPhone, mUserDOB;
     private Example userData;
@@ -50,7 +49,7 @@ public class SignupFragment extends Fragment {
     private Uri uriImage;
     private ImageChooser imageChooser;
     private UserSignUp obj;
-
+    private CheckBox mTick;
 
     @Nullable
     @Override
@@ -58,8 +57,6 @@ public class SignupFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_signup, container, false);
 
         init(rootView);
-
-        check = validate();
 
         mUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +68,7 @@ public class SignupFragment extends Fragment {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check == true) {
+                if (validate()) {
                     uploadData();
 
                 } else {
@@ -151,6 +148,10 @@ public class SignupFragment extends Fragment {
         if (!ValidateEditText.comparePassword(mPass, mConfPass)) {
             return false;
         }
+        if (!mTick.isChecked()) {
+            Toast.makeText(getContext(), "check the terms first!", Toast.LENGTH_LONG).show();
+            return false;
+        }
         return true;
 
     }
@@ -165,6 +166,7 @@ public class SignupFragment extends Fragment {
         mEmail = (MaterialEditText) view.findViewById(R.id.et_email);
         mSubmit = (TextView) view.findViewById(R.id.submit);
         mUserImage = (CircleImageView) view.findViewById(R.id.user_image);
+        mTick = (CheckBox) view.findViewById(R.id.cb_signup_tick);
 
         mUserDOB = mDOB.getText().toString();
         mUserEmail = mEmail.getText().toString();

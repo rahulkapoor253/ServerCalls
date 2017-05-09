@@ -65,7 +65,7 @@
     <string name="email">Email</string>
     <string name="male">Male</string>
 <string name="female">Female</string>
-    <string name="dob">Date Of Birth</string>
+    <string name="dob">Date Of Birth(yyyy-mm-dd)</string>
     <string name="confpass">Confirm Password</string>
 <string name="tos">I accept <u><b>Terms of Service</b></u> and <u><b>Private Policy</b></u></string>
 

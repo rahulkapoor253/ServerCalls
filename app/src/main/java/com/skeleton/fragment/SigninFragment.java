@@ -26,8 +26,8 @@ public class SigninFragment extends Fragment {
     private CheckBox cbTick;
     private TextView btnsignup;
     private TextView btnsignin;
-    private boolean isCheck;
     private String mUserEmail, mUserPass;
+    private CheckBox mTick;
 
     @Nullable
     @Override
@@ -36,12 +36,12 @@ public class SigninFragment extends Fragment {
 
         init(rootView);
 
-        isCheck = validate();
-
         btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isCheck == true) {
+                if (validate()) {
+
+
 
                 } else {
                     Toast.makeText(getContext(), "Sign In again with correct details", Toast.LENGTH_LONG).show();
@@ -58,7 +58,11 @@ public class SigninFragment extends Fragment {
 
         if (!ValidateEditText.checkEmail(etEmail)) {
             return false;
-        } else if (!ValidateEditText.checkPassword(etPassword, true)) {
+        } if (!ValidateEditText.checkPassword(etPassword, true)) {
+            return false;
+        }
+        if(!mTick.isChecked()) {
+            Toast.makeText(getContext(), "check the terms first!", Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -71,6 +75,7 @@ public class SigninFragment extends Fragment {
         cbTick = (CheckBox) view.findViewById(R.id.cb_signin_tick);
         btnsignin = (TextView) view.findViewById(R.id.btn_signin);
         btnsignup = (TextView) view.findViewById(R.id.btn_signup);
+        mTick = (CheckBox) view.findViewById(R.id.cb_signin_tick);
 
         mUserEmail = etEmail.getText().toString();
         mUserPass = etPassword.getText().toString();
