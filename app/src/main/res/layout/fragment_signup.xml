@@ -136,6 +136,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:textSize="@dimen/textSize"
         />
 
@@ -147,6 +148,7 @@
         android:gravity="center"
         android:hint="@string/confpass"
         android:textSize="@dimen/textSize"
+        android:inputType="textPassword"
         />
 
         <CheckBox
