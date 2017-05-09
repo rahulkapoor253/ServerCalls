@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    >
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:layout_weight="0.2"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:src="@mipmap/ic_launcher"
+    android:background="@android:color/darker_gray"
+    android:padding="15dp"
+    android:layout_marginTop="@dimen/margintop"
+    />
+
+<ScrollView
+    android:layout_weight="0.8"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <LinearLayout
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        >
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_name"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/name"
+        android:textSize="@dimen/textSize"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+
+        <TextView
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:textSize="@dimen/textSize"
+            android:text="+91"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_phone"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="0dp"
+        android:layout_weight="0.8"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:hint="@string/phone"
+        android:textSize="@dimen/textSize"
+        />
+
+    </LinearLayout>
+
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_email"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:textSize="@dimen/textSize"
+        />
+
+    <RadioGroup
+        android:id="@+id/rg_signup"
+        android:padding="5dp"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_marginStart="@dimen/margintop"
+        android:layout_marginEnd="@dimen/margintop"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Gender:"
+            android:textSize="@dimen/textSize"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_marginStart="@dimen/margintop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/male"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female"
+            android:layout_marginStart="@dimen/margintop"
+            />
+
+
+    </RadioGroup>
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_dob"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/dob"
+        android:textSize="@dimen/textSize"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_pass"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:textSize="@dimen/textSize"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_confpass"
+        android:layout_marginTop="@dimen/margintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/confpass"
+        android:textSize="@dimen/textSize"
+        />
+
+        <CheckBox
+            android:id="@+id/cb_signup_tick"
+            android:layout_marginTop="@dimen/margintop"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/margintop"
+            android:layout_marginEnd="@dimen/margintop"
+            android:layout_height="wrap_content"
+            android:text="@string/tos"
+            android:textSize="@dimen/textSize"
+            />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margintop"
+            android:layout_marginStart="@dimen/margintop"
+            android:layout_marginTop="@dimen/margintop"
+            android:background="@drawable/bg_green"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Sign Up"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize" />
+
+
+</LinearLayout>
+
+</ScrollView>
+
+
+    </LinearLayout>

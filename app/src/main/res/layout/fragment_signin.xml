@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margintop"
+    android:orientation="vertical">
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_signin_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop"
+        android:gravity="center"
+        android:hint="@string/emailphone"
+        android:textSize="@dimen/textSize" />
+
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/et_signin_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="@dimen/textSize" />
+
+    <CheckBox
+        android:id="@+id/cb_signin_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margintop"
+        android:text="@string/rememberme"
+        android:textSize="@dimen/textSize" />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margintop"
+
+        android:text="@string/forgotpass"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/btn_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margintop"
+        android:layout_marginStart="@dimen/margintop"
+        android:layout_marginTop="@dimen/margintop"
+        android:background="@drawable/bg_green"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/signin"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margintop"
+        android:layout_marginStart="@dimen/margintop"
+        android:layout_marginTop="@dimen/margintop"
+        android:background="@drawable/bg_blue"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/signinfb"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textSize" />
+
+
+</LinearLayout>
