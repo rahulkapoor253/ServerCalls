@@ -42,7 +42,7 @@ android {
     }
     productFlavors {
         DEV {
-            buildConfigField 'String', 'BASE_URL', '"https://reqres.in/"'
+            buildConfigField 'String', 'BASE_URL', '"http://52.38.181.185:3000/"'
             buildConfigField 'boolean', 'WATER_MARK', 'true'
         }
         QA {
@@ -64,7 +64,6 @@ android {
 
 dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile "com.android.support:recyclerview-v7:25.1.1"
     /**
      *
      * android development support dependencies
@@ -118,6 +117,7 @@ dependencies {
      * Image Crop dependencies
      */
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    compile 'com.android.support:design:25.1.1'
 
     /**
      * leakcanary dependencies

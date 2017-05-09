@@ -2,6 +2,7 @@ package com.skeleton.activity;
 
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -24,6 +25,7 @@ public class FirstActivity extends BaseActivity {
     private ViewPager mViewPager;
     private PagerAdapter mPagerAdapter;
     private List<Fragment> fragments;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class FirstActivity extends BaseActivity {
 
 
         mPagerAdapter = new com.skeleton.adapter.PagerAdapter(getSupportFragmentManager(), fragments);
+        mViewPager.setAdapter(mPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
 
 
     }
@@ -43,6 +47,8 @@ public class FirstActivity extends BaseActivity {
         fragments = new ArrayList<>();
         fragments.add(new SigninFragment());
         fragments.add(new SignupFragment());
+
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
 
     }

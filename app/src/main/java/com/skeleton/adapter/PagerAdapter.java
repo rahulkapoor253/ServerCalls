@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragments;
+    private String[] mTabHeader = new String[]{"Sign In", "Sign Up"};
 
     /**
      * Instantiates a new Pager adapter.
@@ -51,5 +52,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         } else {
             return fragments.size();
         }
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTabHeader[position];
     }
 }
