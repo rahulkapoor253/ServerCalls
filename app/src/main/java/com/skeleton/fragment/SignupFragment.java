@@ -1,15 +1,21 @@
 package com.skeleton.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.model.Example;
@@ -50,6 +56,11 @@ public class SignupFragment extends Fragment {
     private ImageChooser imageChooser;
     private UserSignUp obj;
     private CheckBox mTick;
+    private RadioGroup rgGender;
+    private RadioButton rbMale;
+    private RadioButton rbFemale;
+    private int mGender;
+    private String mUserToken = "ABCD", mUserAppVersion = "VERSION", mCountryCode = "+91", mLang = "EN", mDeviceType = "ANDROID";
 
     @Nullable
     @Override
@@ -69,6 +80,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
+                    setData();
                     uploadData();
 
                 } else {
@@ -81,16 +93,24 @@ public class SignupFragment extends Fragment {
         return rootView;
     }
 
+    private void setData() {
+        mUserDOB = mDOB.getText().toString();
+        mUserEmail = mEmail.getText().toString();
+        mUserPass = mPass.getText().toString();
+        mUserName = mName.getText().toString();
+        mUserPhone = mPhone.getText().toString();
+    }
+
     private void chooseImage() {
         imageChooser = new ImageChooser.Builder(this).setCropEnabled(false).build();
         imageChooser.selectImage(new ImageChooser.OnImageSelectListener() {
             @Override
             public void loadImage(final List<ChosenImage> list) {
-                uriImage = Uri.parse(list.get(0).getQueryUri());
-                mImageFile = new File(String.valueOf(uriImage));
-                if (uriImage != null) {
-                    mUserImage.setImageURI(uriImage);
-                }
+                mImageFile = new File(list.get(0).getOriginalPath());
+                Glide.with(SignupFragment.this)
+                        .load(list.get(0).getQueryUri())
+                        .into(mUserImage);
+
             }
 
             @Override
@@ -100,10 +120,20 @@ public class SignupFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    imageChooser.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    imageChooser.onActivityResult(requestCode, resultCode, data);
+
+    }
 
     private void uploadData() {
-
-        obj = new UserSignUp(mUserName, mUserDOB, mUserEmail, mUserPhone, mUserPass);
 
         HashMap<String, RequestBody> params = new MultipartParams.Builder()
                 .add("firstName", mUserName)
@@ -111,7 +141,13 @@ public class SignupFragment extends Fragment {
                 .add("phoneNo", mUserPhone)
                 .add("email", mUserEmail)
                 .add("password", mUserPass)
-                .add("profilePic", mImageFile)
+                .addFile("profilePic", mImageFile)
+                .add("deviceToken", mUserToken)
+                .add("appVersion", mUserAppVersion)
+                .add("countryCode", mCountryCode)
+                .add("language", mLang)
+                .add("deviceType", mDeviceType)
+                .add("gender", mGender)
                 .build().getMap();
 
         RestClient.getApiInterface().register(params).enqueue(new ResponseResolver<Example>(getContext(), true) {
@@ -129,7 +165,12 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean validate() {
-        if (uriImage == null) {
+
+        mGender = rgGender.getCheckedRadioButtonId();
+        int checkVal = checkGender();
+        mGender = checkVal;
+
+        if (mImageFile == null) {
             Toast.makeText(getContext(), "Choose a profile picture first!", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -148,12 +189,27 @@ public class SignupFragment extends Fragment {
         if (!ValidateEditText.comparePassword(mPass, mConfPass)) {
             return false;
         }
+        if (mGender == -1) {
+            return false;
+        }
         if (!mTick.isChecked()) {
             Toast.makeText(getContext(), "check the terms first!", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
 
+    }
+
+    private int checkGender() {
+
+        if(rbMale.isChecked()) {
+            return 0;
+        }
+        if(rbFemale.isChecked()) {
+            return 1;
+        }
+
+        return -1;
     }
 
     private void init(View view) {
@@ -167,12 +223,9 @@ public class SignupFragment extends Fragment {
         mSubmit = (TextView) view.findViewById(R.id.submit);
         mUserImage = (CircleImageView) view.findViewById(R.id.user_image);
         mTick = (CheckBox) view.findViewById(R.id.cb_signup_tick);
-
-        mUserDOB = mDOB.getText().toString();
-        mUserEmail = mEmail.getText().toString();
-        mUserPass = mPass.getText().toString();
-        mUserName = mName.getText().toString();
-        mUserPhone = mPhone.getText().toString();
+        rgGender = (RadioGroup) view.findViewById(R.id.rg_gender);
+        rbMale = (RadioButton) view.findViewById(R.id.rb_male);
+        rbFemale = (RadioButton) view.findViewById(R.id.rb_female);
 
     }
 }

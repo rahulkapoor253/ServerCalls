@@ -11,6 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skeleton.R;
+import com.skeleton.model.Example;
+import com.skeleton.retrofit.APIError;
+import com.skeleton.retrofit.MultipartParams;
+import com.skeleton.retrofit.ResponseResolver;
+import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.ValidateEditText;
 import com.skeleton.util.customview.MaterialEditText;
 
@@ -41,6 +46,30 @@ public class SigninFragment extends Fragment {
             public void onClick(View v) {
                 if (validate()) {
 
+                    setData();
+                    MultipartParams params = new MultipartParams.Builder()
+                            .add("email", mUserEmail)
+                            .add("password", mUserPass)
+                            .add("deviceType", "ANDROID")
+                            .add("language", "EN")
+                            .add("deviceToken", "ABCD")
+                            .add("flushPreviousSeesions", true)
+                            .add("appVersion", "VERSION")
+                            .build();
+
+                    RestClient.getApiInterface().login(params.getMap()).enqueue(new ResponseResolver<Example>(getContext(), true) {
+                        @Override
+                        public void success(Example example) {
+
+                            Toast.makeText(getContext(), example.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void failure(APIError error) {
+
+
+                        }
+                    });
 
 
                 } else {
@@ -52,6 +81,13 @@ public class SigninFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    private void setData() {
+
+        mUserEmail = etEmail.getText().toString();
+        mUserPass = etPassword.getText().toString();
+
     }
 
     private boolean validate() {
@@ -76,9 +112,6 @@ public class SigninFragment extends Fragment {
         btnsignin = (TextView) view.findViewById(R.id.btn_signin);
         btnsignup = (TextView) view.findViewById(R.id.btn_signup);
         mTick = (CheckBox) view.findViewById(R.id.cb_signin_tick);
-
-        mUserEmail = etEmail.getText().toString();
-        mUserPass = etPassword.getText().toString();
 
     }
 

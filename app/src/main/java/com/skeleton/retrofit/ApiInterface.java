@@ -21,6 +21,7 @@ import retrofit2.http.Query;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 import static com.skeleton.retrofit.ApiInterface.SUB_URL;
+import static com.skeleton.retrofit.ApiInterface.SUB_URL_1;
 
 /**
  * Developer: Saurabh Verma
@@ -30,6 +31,7 @@ public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
 
     String SUB_URL = "api/user/register";
+    String SUB_URL_1 = "api/user/login";
 
 //    /**
 //     * @param map
@@ -91,6 +93,11 @@ public interface ApiInterface {
     @Multipart
     @POST(SUB_URL)
     Call<Example> register(@PartMap HashMap<String, RequestBody> map);
+
+    @FormUrlEncoded
+    @POST(SUB_URL_1)
+    Call<Example> login(@FieldMap HashMap<String, RequestBody> map);
+
 
 
 }
