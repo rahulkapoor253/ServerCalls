@@ -33,6 +33,7 @@ public class SigninFragment extends Fragment {
     private TextView btnsignin;
     private String mUserEmail, mUserPass;
     private CheckBox mTick;
+    private String deviceType = "ANDROID";
 
     /**
      * @param inflater           inflater
@@ -56,10 +57,10 @@ public class SigninFragment extends Fragment {
                     MultipartParams params = new MultipartParams.Builder()
                             .add("email", mUserEmail)
                             .add("password", mUserPass)
-                            .add("deviceType", "ANDROID")
+                            .add("deviceType", deviceType)
                             .add("language", "EN")
                             .add("deviceToken", "ABCD")
-                            .add("flushPreviousSeesions", true)
+                            .add("flushPreviousSessions", true)
                             .add("appVersion", "VERSION")
                             .build();
 
