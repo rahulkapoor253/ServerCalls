@@ -65,4 +65,8 @@ public final class CommonData implements PaperDbConstant {
         Paper.book().destroy();
         updateFCMToken(deviceToken);
     }
+
+    @Override
+    public void dummy() {
+    }
 }

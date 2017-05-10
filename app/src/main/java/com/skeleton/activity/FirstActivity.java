@@ -43,6 +43,8 @@ public class FirstActivity extends BaseActivity {
 
     }
 
+
+
     /**
      * init;
      */
@@ -58,4 +60,8 @@ public class FirstActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void dummy() {
+
+    }
 }

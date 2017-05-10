@@ -42,4 +42,9 @@ public class TestLocationFragment extends LocationBaseFragment {
         return new LocationConfig().setRepeated(true).setTimeInterval(TIME_INTERVAL);
 
     }
+
+    @Override
+    public void dummy() {
+
+    }
 }

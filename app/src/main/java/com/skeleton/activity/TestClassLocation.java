@@ -22,4 +22,7 @@ public class TestClassLocation extends BaseActivity {
         testLocationFragment = (TestLocationFragment) getSupportFragmentManager().findFragmentById(R.id.testLocationFragment);
     }
 
+    @Override
+    public void dummy() {
+    }
 }

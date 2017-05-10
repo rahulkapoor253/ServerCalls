@@ -149,4 +149,8 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         }
     }
 
+    @Override
+    public void dummy() {
+
+    }
 }
