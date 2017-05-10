@@ -29,10 +29,15 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    /**
+     *
+     * @param position pos
+     * @return return
+     */
     @Override
     public Fragment getItem(final int position) {
 
-        switch (position){
+        switch (position) {
 
             case 0:
                 return new SigninFragment();
@@ -45,6 +50,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    /**
+     *
+     * @return return
+     */
     @Override
     public int getCount() {
         if (fragments == null) {
@@ -54,8 +63,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+    /**
+     *
+     * @param position pos
+     * @return return
+     */
     @Override
-    public CharSequence getPageTitle(int position) {
+    public CharSequence getPageTitle(final int position) {
         return mTabHeader[position];
     }
 }

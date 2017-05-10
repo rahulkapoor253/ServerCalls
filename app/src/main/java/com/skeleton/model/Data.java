@@ -16,19 +16,31 @@ public class Data {
     @Expose
     private UserDetails userDetails;
 
+    /**
+     * @return return
+     */
     public String getAccessToken() {
         return accessToken;
     }
 
-    public void setAccessToken(String accessToken) {
+    /**
+     * @param accessToken accessToken
+     */
+    public void setAccessToken(final String accessToken) {
         this.accessToken = accessToken;
     }
 
+    /**
+     * @return return
+     */
     public UserDetails getUserDetails() {
         return userDetails;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
+    /**
+     * @param userDetails userDetails
+     */
+    public void setUserDetails(final UserDetails userDetails) {
         this.userDetails = userDetails;
     }
 

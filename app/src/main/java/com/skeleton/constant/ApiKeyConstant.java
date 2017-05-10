@@ -14,4 +14,10 @@ public interface ApiKeyConstant {
     String LATITUDE = "lat";
     String LONGITUDE = "lng";
     String TIMESTAMP = "timestamp";
+
+    /**
+     * dummy method of interface;
+     */
+    void dummy();
+
 }

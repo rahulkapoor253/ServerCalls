@@ -69,155 +69,269 @@ public class UserDetails {
     @Expose
     private CurrentLocation currentLocation;
 
+    /**
+     * @return return
+     */
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    /**
+     * @param id id
+     */
+    public void setId(final String id) {
         this.id = id;
     }
 
+    /**
+     * @return return
+     */
     public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    /**
+     * @param createdAt created at
+     */
+    public void setCreatedAt(final String createdAt) {
         this.createdAt = createdAt;
     }
 
+    /**
+     * @return return
+     */
     public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    /**
+     * @param updatedAt updatedAt
+     */
+    public void setUpdatedAt(final String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
+    /**
+     * @return return
+     */
     public String getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    /**
+     * @param dob dob
+     */
+    public void setDob(final String dob) {
         this.dob = dob;
     }
 
+    /**
+     * @return return
+     */
     public String getCountryCode() {
         return countryCode;
     }
 
-    public void setCountryCode(String countryCode) {
+    /**
+     * @param countryCode country code
+     */
+    public void setCountryCode(final String countryCode) {
         this.countryCode = countryCode;
     }
 
+    /**
+     * @return return
+     */
     public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(String phoneNo) {
+    /**
+     * @param phoneNo phoneno
+     */
+    public void setPhoneNo(final String phoneNo) {
         this.phoneNo = phoneNo;
     }
 
+    /**
+     * @return return
+     */
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    /**
+     * @param email email
+     */
+    public void setEmail(final String email) {
         this.email = email;
     }
 
+    /**
+     * @return return
+     */
     public String getNewNumber() {
         return newNumber;
     }
 
-    public void setNewNumber(String newNumber) {
+    /**
+     * @param newNumber new Number
+     */
+    public void setNewNumber(final String newNumber) {
         this.newNumber = newNumber;
     }
 
+    /**
+     * @return return userImage
+     */
     public List<UserImage> getUserImages() {
         return userImages;
     }
 
-    public void setUserImages(List<UserImage> userImages) {
+    /**
+     * @param userImages userImages
+     */
+    public void setUserImages(final List<UserImage> userImages) {
         this.userImages = userImages;
     }
 
+    /**
+     * @return return
+     */
     public Boolean getAdminDeactivateAccount() {
         return adminDeactivateAccount;
     }
 
-    public void setAdminDeactivateAccount(Boolean adminDeactivateAccount) {
+    /**
+     * @param adminDeactivateAccount adminDeactivate Account
+     */
+    public void setAdminDeactivateAccount(final Boolean adminDeactivateAccount) {
         this.adminDeactivateAccount = adminDeactivateAccount;
     }
 
+    /**
+     * @return time offset
+     */
     public Integer getTimeOffset() {
         return timeOffset;
     }
 
-    public void setTimeOffset(Integer timeOffset) {
+    /**
+     * @param timeOffset timeoffset
+     */
+    public void setTimeOffset(final Integer timeOffset) {
         this.timeOffset = timeOffset;
     }
 
+    /**
+     * @return return
+     */
     public Object getGender() {
         return gender;
     }
 
-    public void setGender(Object gender) {
+    /**
+     * @param gender gender
+     */
+    public void setGender(final Object gender) {
         this.gender = gender;
     }
 
+    /**
+     * @return return
+     */
     public String getAboutMe() {
         return aboutMe;
     }
 
-    public void setAboutMe(String aboutMe) {
+    /**
+     * @param aboutMe aboutMe
+     */
+    public void setAboutMe(final String aboutMe) {
         this.aboutMe = aboutMe;
     }
 
+    /**
+     * @return return boolean
+     */
     public Boolean getStep2CompleteOrSkip() {
         return step2CompleteOrSkip;
     }
 
-    public void setStep2CompleteOrSkip(Boolean step2CompleteOrSkip) {
+    /**
+     * @param step2CompleteOrSkip Step2Compelte or skip
+     */
+    public void setStep2CompleteOrSkip(final Boolean step2CompleteOrSkip) {
         this.step2CompleteOrSkip = step2CompleteOrSkip;
     }
 
+    /**
+     * @return return
+     */
     public Boolean getStep1CompleteOrSkip() {
         return step1CompleteOrSkip;
     }
 
-    public void setStep1CompleteOrSkip(Boolean step1CompleteOrSkip) {
+    /**
+     * @param step1CompleteOrSkip Step2Compelte or skip
+     */
+    public void setStep1CompleteOrSkip(final Boolean step1CompleteOrSkip) {
         this.step1CompleteOrSkip = step1CompleteOrSkip;
     }
 
+    /**
+     * @return return
+     */
     public List<Object> getInterestCategories() {
         return interestCategories;
     }
 
-    public void setInterestCategories(List<Object> interestCategories) {
+    /**
+     * @param interestCategories interest Categories
+     */
+    public void setInterestCategories(final List<Object> interestCategories) {
         this.interestCategories = interestCategories;
     }
 
+    /**
+     * @return return
+     */
     public ProfilePicURL getProfilePicURL() {
         return profilePicURL;
     }
 
-    public void setProfilePicURL(ProfilePicURL profilePicURL) {
+    /**
+     * @param profilePicURL profile picture URL
+     */
+    public void setProfilePicURL(final ProfilePicURL profilePicURL) {
         this.profilePicURL = profilePicURL;
     }
 
+    /**
+     * @return return
+     */
     public Object getDefaultAddressId() {
         return defaultAddressId;
     }
 
-    public void setDefaultAddressId(Object defaultAddressId) {
+    /**
+     * @param defaultAddressId deafaualt address ID
+     */
+    public void setDefaultAddressId(final Object defaultAddressId) {
         this.defaultAddressId = defaultAddressId;
     }
 
+    /**
+     * @return return
+     */
     public CurrentLocation getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(CurrentLocation currentLocation) {
+    /**
+     * @param currentLocation current location;
+     */
+    public void setCurrentLocation(final CurrentLocation currentLocation) {
         this.currentLocation = currentLocation;
     }
 

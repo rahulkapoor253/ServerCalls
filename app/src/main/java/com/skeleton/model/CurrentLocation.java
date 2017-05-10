@@ -15,11 +15,17 @@ public class CurrentLocation {
     @Expose
     private List<Integer> coordinates = null;
 
+    /**
+     * @return return
+     */
     public List<Integer> getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(List<Integer> coordinates) {
+    /**
+     * @param coordinates coordinates
+     */
+    public void setCoordinates(final List<Integer> coordinates) {
         this.coordinates = coordinates;
     }
 

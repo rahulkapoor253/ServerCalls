@@ -34,16 +34,22 @@ public class SigninFragment extends Fragment {
     private String mUserEmail, mUserPass;
     private CheckBox mTick;
 
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current instance is saved;
+     * @return return
+     */
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_signin, container, false);
 
         init(rootView);
 
         btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if (validate()) {
 
                     setData();
@@ -58,14 +64,22 @@ public class SigninFragment extends Fragment {
                             .build();
 
                     RestClient.getApiInterface().login(params.getMap()).enqueue(new ResponseResolver<Example>(getContext(), true) {
+                        /**
+                         *
+                         * @param example example
+                         */
                         @Override
-                        public void success(Example example) {
+                        public void success(final Example example) {
 
                             Toast.makeText(getContext(), example.getMessage(), Toast.LENGTH_LONG).show();
                         }
 
+                        /**
+                         *
+                         * @param error the error
+                         */
                         @Override
-                        public void failure(APIError error) {
+                        public void failure(final APIError error) {
 
 
                         }
@@ -83,6 +97,9 @@ public class SigninFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * set data
+     */
     private void setData() {
 
         mUserEmail = etEmail.getText().toString();
@@ -90,14 +107,18 @@ public class SigninFragment extends Fragment {
 
     }
 
+    /**
+     * @return return boolean;
+     */
     private boolean validate() {
 
         if (!ValidateEditText.checkEmail(etEmail)) {
             return false;
-        } if (!ValidateEditText.checkPassword(etPassword, true)) {
+        }
+        if (!ValidateEditText.checkPassword(etPassword, true)) {
             return false;
         }
-        if(!mTick.isChecked()) {
+        if (!mTick.isChecked()) {
             Toast.makeText(getContext(), "check the terms first!", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -105,7 +126,10 @@ public class SigninFragment extends Fragment {
         return true;
     }
 
-    private void init(View view) {
+    /**
+     * @param view view;
+     */
+    private void init(final View view) {
         etEmail = (MaterialEditText) view.findViewById(R.id.et_signin_email);
         etPassword = (MaterialEditText) view.findViewById(R.id.et_signin_password);
         cbTick = (CheckBox) view.findViewById(R.id.cb_signin_tick);

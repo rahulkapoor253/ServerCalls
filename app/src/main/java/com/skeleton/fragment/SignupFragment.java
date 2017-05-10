@@ -3,7 +3,6 @@ package com.skeleton.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.model.Example;
-import com.skeleton.model.UserSignUp;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
@@ -54,7 +52,6 @@ public class SignupFragment extends Fragment {
     private CircleImageView mUserImage;
     private Uri uriImage;
     private ImageChooser imageChooser;
-    private UserSignUp obj;
     private CheckBox mTick;
     private RadioGroup rgGender;
     private RadioButton rbMale;
@@ -62,23 +59,37 @@ public class SignupFragment extends Fragment {
     private int mGender;
     private String mUserToken = "ABCD", mUserAppVersion = "VERSION", mCountryCode = "+91", mLang = "EN", mDeviceType = "ANDROID";
 
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current instance is saved;
+     * @return return
+     */
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_signup, container, false);
 
         init(rootView);
 
         mUserImage.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v view
+             */
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 chooseImage();
             }
         });
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v view
+             */
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if (validate()) {
                     setData();
                     uploadData();
@@ -93,6 +104,9 @@ public class SignupFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * set data
+     */
     private void setData() {
         mUserDOB = mDOB.getText().toString();
         mUserEmail = mEmail.getText().toString();
@@ -101,9 +115,16 @@ public class SignupFragment extends Fragment {
         mUserPhone = mPhone.getText().toString();
     }
 
+    /**
+     * image chooser
+     */
     private void chooseImage() {
         imageChooser = new ImageChooser.Builder(this).setCropEnabled(false).build();
         imageChooser.selectImage(new ImageChooser.OnImageSelectListener() {
+            /**
+             *
+             * @param list the list
+             */
             @Override
             public void loadImage(final List<ChosenImage> list) {
                 mImageFile = new File(list.get(0).getOriginalPath());
@@ -113,6 +134,10 @@ public class SignupFragment extends Fragment {
 
             }
 
+            /**
+             *
+             * @param mCroppedImage the m cropped image
+             */
             @Override
             public void croppedImage(final File mCroppedImage) {
 
@@ -120,19 +145,32 @@ public class SignupFragment extends Fragment {
         });
     }
 
+    /**
+     * @param requestCode  request code
+     * @param permissions  permissions
+     * @param grantResults grant results
+     */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    imageChooser.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        imageChooser.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    /**
+     * @param requestCode req code
+     * @param resultCode  result code
+     * @param data        data
+     */
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-    imageChooser.onActivityResult(requestCode, resultCode, data);
+        imageChooser.onActivityResult(requestCode, resultCode, data);
 
     }
 
+    /**
+     * upload data
+     */
     private void uploadData() {
 
         HashMap<String, RequestBody> params = new MultipartParams.Builder()
@@ -151,19 +189,30 @@ public class SignupFragment extends Fragment {
                 .build().getMap();
 
         RestClient.getApiInterface().register(params).enqueue(new ResponseResolver<Example>(getContext(), true) {
+            /**
+             *
+             * @param example example
+             */
             @Override
-            public void success(Example example) {
+            public void success(final Example example) {
                 Toast.makeText(getContext(), example.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
+            /**
+             *
+             * @param error the error
+             */
             @Override
-            public void failure(APIError error) {
+            public void failure(final APIError error) {
 
             }
         });
 
     }
 
+    /**
+     * @return return boolean
+     */
     private boolean validate() {
 
         mGender = rgGender.getCheckedRadioButtonId();
@@ -200,19 +249,25 @@ public class SignupFragment extends Fragment {
 
     }
 
+    /**
+     * @return checkGender
+     */
     private int checkGender() {
 
-        if(rbMale.isChecked()) {
+        if (rbMale.isChecked()) {
             return 0;
         }
-        if(rbFemale.isChecked()) {
+        if (rbFemale.isChecked()) {
             return 1;
         }
 
         return -1;
     }
 
-    private void init(View view) {
+    /**
+     * @param view view
+     */
+    private void init(final View view) {
 
         mName = (MaterialEditText) view.findViewById(R.id.et_name);
         mPhone = (MaterialEditText) view.findViewById(R.id.et_phone);

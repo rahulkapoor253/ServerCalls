@@ -19,28 +19,45 @@ public class Example {
     @Expose
     private Data data;
 
-
+    /**
+     * @return return
+     */
     public Integer getStatusCode() {
         return statusCode;
     }
 
-    public void setStatusCode(Integer statusCode) {
+    /**
+     * @param statusCode status code
+     */
+    public void setStatusCode(final Integer statusCode) {
         this.statusCode = statusCode;
     }
 
+    /**
+     * @return return
+     */
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    /**
+     * @param message message
+     */
+    public void setMessage(final String message) {
         this.message = message;
     }
 
+    /**
+     * @return return
+     */
     public Data getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    /**
+     * @param data data
+     */
+    public void setData(final Data data) {
         this.data = data;
     }
 

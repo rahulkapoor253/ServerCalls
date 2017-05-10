@@ -1,13 +1,10 @@
 package com.skeleton.activity;
 
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.skeleton.R;
 import com.skeleton.fragment.SigninFragment;
@@ -27,6 +24,10 @@ public class FirstActivity extends BaseActivity {
     private List<Fragment> fragments;
     private TabLayout mTabLayout;
 
+    /**
+     *
+     * @param savedInstanceState current instance is saved;
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,9 @@ public class FirstActivity extends BaseActivity {
 
     }
 
+    /**
+     * init;
+     */
     private void init() {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         fragments = new ArrayList<>();

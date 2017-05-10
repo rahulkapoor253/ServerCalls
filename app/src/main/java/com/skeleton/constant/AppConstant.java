@@ -18,4 +18,10 @@ public interface AppConstant {
     int REQ_CODE_DEFAULT_SETTINGS = 16061;
     int REQ_CODE_PLAY_SERVICES_RESOLUTION = 16061;
     int REQ_CODE_SCREEN_OVERLAY = 10101;
+
+    /**
+     * dummy method of interface;
+     */
+    void dummy();
+
 }
